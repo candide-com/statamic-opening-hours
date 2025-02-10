@@ -11,455 +11,125 @@ class OpeningHoursBlueprint
     {
         return Blueprint::make()->setContents([
             'sections' => [
-                'main' => [
+                'sections' => [
+                    'display' => __('statamic-opening-hours::opening-hours.sections'),
                     'fields' => [
                         [
-                            'handle' => 'default_hours_title',
+                            'handle' => 'is_closed',
                             'field' => [
-                                'type' => 'section',
-                                'display' => __('statamic-opening-hours::opening-hours.default-hours.display'),
-                                'instructions' => __('statamic-opening-hours::opening-hours.default-hours.instructions'),
-                                'listable' => 'hidden',
-                            ],
-                        ],
-                        [
-                            'handle' => 'monday',
-                            'field' => [
-                                'fields' => [
-                                    [
-                                        'handle' => 'from',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.from'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ],
-                                    [
-                                        'handle' => 'to',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.to'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ]
-                                ],
-                                'mode' => 'table',
-                                'add_row' => __('statamic-opening-hours::opening-hours.add-hours'),
-                                'reorderable' => true,
-                                'display' => __('statamic-opening-hours::opening-hours.weekdays.monday'),
-                                'type' => 'grid',
-                                'icon' => 'grid',
-                                'listable' => 'hidden',
-                                'instructions_position' => 'above',
-                                'visibility' => 'visible',
-                                'always_save' => false
+                                'type' => 'toggle',
+                                'display' => __('statamic-opening-hours::opening-hours.is_closed'),
+                                'instructions' => __('statamic-opening-hours::opening-hours.is_closed_instructions'),
                             ]
                         ],
                         [
-                            'handle' => 'tuesday',
+                            'handle' => 'closure_reason',
                             'field' => [
-                                'fields' => [
-                                    [
-                                        'handle' => 'from',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.from'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ],
-                                    [
-                                        'handle' => 'to',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.to'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ]
-                                ],
-                                'mode' => 'table',
-                                'add_row' => __('statamic-opening-hours::opening-hours.add-hours'),
-                                'reorderable' => true,
-                                'display' => __('statamic-opening-hours::opening-hours.weekdays.tuesday'),
-                                'type' => 'grid',
-                                'icon' => 'grid',
-                                'listable' => 'hidden',
-                                'instructions_position' => 'above',
-                                'visibility' => 'visible',
-                                'always_save' => false
+                                'type' => 'text',
+                                'display' => __('statamic-opening-hours::opening-hours.closure_reason'),
+                                'instructions' => __('statamic-opening-hours::opening-hours.closure_reason_instructions'),
+                                'if' => [
+                                    'is_closed' => 'true'
+                                ]
                             ]
                         ],
                         [
-                            'handle' => 'wednesday',
+                            'handle' => 'sections',
                             'field' => [
-                                'fields' => [
-                                    [
-                                        'handle' => 'from',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.from'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ],
-                                    [
-                                        'handle' => 'to',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.to'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ]
-                                ],
-                                'mode' => 'table',
-                                'add_row' => __('statamic-opening-hours::opening-hours.add-hours'),
-                                'reorderable' => true,
-                                'display' => __('statamic-opening-hours::opening-hours.weekdays.wednesday'),
-                                'type' => 'grid',
-                                'icon' => 'grid',
-                                'listable' => 'hidden',
-                                'instructions_position' => 'above',
-                                'visibility' => 'visible',
-                                'always_save' => false
-                            ]
-                        ],
-                        [
-                            'handle' => 'thursday',
-                            'field' => [
-                                'fields' => [
-                                    [
-                                        'handle' => 'from',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.from'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ],
-                                    [
-                                        'handle' => 'to',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.to'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ]
-                                ],
-                                'mode' => 'table',
-                                'add_row' => __('statamic-opening-hours::opening-hours.add-hours'),
-                                'reorderable' => true,
-                                'display' => __('statamic-opening-hours::opening-hours.weekdays.thursday'),
-                                'type' => 'grid',
-                                'icon' => 'grid',
-                                'listable' => 'hidden',
-                                'instructions_position' => 'above',
-                                'visibility' => 'visible',
-                                'always_save' => false
-                            ]
-                        ],
-                        [
-                            'handle' => 'friday',
-                            'field' => [
-                                'fields' => [
-                                    [
-                                        'handle' => 'from',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.from'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ],
-                                    [
-                                        'handle' => 'to',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.to'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ]
-                                ],
-                                'mode' => 'table',
-                                'add_row' => __('statamic-opening-hours::opening-hours.add-hours'),
-                                'reorderable' => true,
-                                'display' => __('statamic-opening-hours::opening-hours.weekdays.friday'),
-                                'type' => 'grid',
-                                'icon' => 'grid',
-                                'listable' => 'hidden',
-                                'instructions_position' => 'above',
-                                'visibility' => 'visible',
-                                'always_save' => false
-                            ]
-                        ],
-                        [
-                            'handle' => 'saturday',
-                            'field' => [
-                                'fields' => [
-                                    [
-                                        'handle' => 'from',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.from'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ],
-                                    [
-                                        'handle' => 'to',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.to'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ]
-                                ],
-                                'mode' => 'table',
-                                'add_row' => __('statamic-opening-hours::opening-hours.add-hours'),
-                                'reorderable' => true,
-                                'display' => __('statamic-opening-hours::opening-hours.weekdays.saturday'),
-                                'type' => 'grid',
-                                'icon' => 'grid',
-                                'listable' => 'hidden',
-                                'instructions_position' => 'above',
-                                'visibility' => 'visible',
-                                'always_save' => false
-                            ]
-                        ],
-                        [
-                            'handle' => 'sunday',
-                            'field' => [
-                                'fields' => [
-                                    [
-                                        'handle' => 'from',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.from'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ],
-                                    [
-                                        'handle' => 'to',
-                                        'field' => [
-                                            'seconds_enabled' => false,
-                                            'display' => __('statamic-opening-hours::opening-hours.to'),
-                                            'type' => 'time',
-                                            'icon' => 'time',
-                                            'width' => 50,
-                                            'listable' => 'hidden',
-                                            'instructions_position' => 'above',
-                                            'visibility' => 'visible',
-                                            'always_save' => false,
-                                            'validate' => 'required'
-                                        ]
-                                    ]
-                                ],
-                                'mode' => 'table',
-                                'add_row' => __('statamic-opening-hours::opening-hours.add-hours'),
-                                'reorderable' => true,
-                                'display' => __('statamic-opening-hours::opening-hours.weekdays.sunday'),
-                                'type' => 'grid',
-                                'icon' => 'grid',
-                                'listable' => 'hidden',
-                                'instructions_position' => 'above',
-                                'visibility' => 'visible',
-                                'always_save' => false
-                            ]
-                        ],
-                        [
-                            'handle' => 'exceptions',
-                            'field' => [
-                                'collapse' => false,
-                                'previews' => true,
+                                'type' => 'replicator',
+                                'display' => __('statamic-opening-hours::opening-hours.sections'),
                                 'sets' => [
-                                    'exception' => [
-                                        'display' => __('statamic-opening-hours::opening-hours.exceptions.set_title'),
+                                    'section' => [
+                                        'display' => __('statamic-opening-hours::opening-hours.section.section_title'),
                                         'fields' => [
                                             [
-                                                'handle' => 'date',
+                                                'handle' => 'header',
                                                 'field' => [
-                                                    'mode' => 'single',
-                                                    'time_enabled' => false,
-                                                    'time_seconds_enabled' => false,
-                                                    'full_width' => false,
-                                                    'inline' => false,
-                                                    'columns' => 1,
-                                                    'rows' => 1,
-                                                    'display' => __('statamic-opening-hours::opening-hours.exceptions.closing_date'),
-                                                    'type' => 'date',
-                                                    'icon' => 'date',
-                                                    'width' => 50,
-                                                    'listable' => 'hidden',
-                                                    'instructions_position' => 'above',
-                                                    'visibility' => 'visible',
-                                                    'always_save' => false,
-                                                    'validate' => 'required'
-                                                ],
+                                                    'type' => 'grid',
+                                                    'display' => null,
+                                                    'fields' => [
+                                                        [
+                                                            'handle' => 'title',
+                                                            'field' => [
+                                                                'type' => 'text',
+                                                                'display' => __('statamic-opening-hours::opening-hours.section.section_title'),
+                                                                'validate' => 'required',
+                                                                'width' => 66
+                                                            ]
+                                                        ],
+                                                        [
+                                                            'handle' => 'slug',
+                                                            'field' => [
+                                                                'type' => 'slug',
+                                                                'display' => __('statamic-opening-hours::opening-hours.section.section_slug'),
+                                                                'from' => 'title',
+                                                                'width' => 33
+                                                            ]
+                                                        ]
+                                                    ],
+                                                    'mode' => 'table',
+                                                    'max_rows' => 1,
+                                                    'min_rows' => 1,
+                                                    'add_row' => false,
+                                                    'hide_display' => true,
+                                                    'reorderable' => false
+                                                ]
                                             ],
                                             [
-                                                'handle' => 'reason',
+                                                'handle' => 'description',
                                                 'field' => [
-                                                    'input_type' => 'text',
-                                                    'antlers' => false,
-                                                    'display' => __('statamic-opening-hours::opening-hours.exceptions.reason'),
+                                                    'type' => 'markdown',
+                                                    'display' => __('statamic-opening-hours::opening-hours.section.section_description'),
+                                                    'buttons' => ['bold', 'italic', 'unorderedlist', 'orderedlist', 'link']
+                                                ]
+                                            ],
+                                            [
+                                                'handle' => 'is_closed',
+                                                'field' => [
+                                                    'type' => 'toggle',
+                                                    'display' => __('statamic-opening-hours::opening-hours.section.is_closed'),
+                                                    'width' => 25
+                                                ]
+                                            ],
+                                            [
+                                                'handle' => 'closure_reason',
+                                                'field' => [
                                                     'type' => 'text',
-                                                    'icon' => 'text',
-                                                    'width' => 50,
-                                                    'listable' => 'hidden',
-                                                    'instructions_position' => 'above',
-                                                    'visibility' => 'visible',
-                                                    'always_save' => false,
-                                                ],
+                                                    'display' => __('statamic-opening-hours::opening-hours.section.closure_reason'),
+                                                    'width' => 75,
+                                                    'if' => [
+                                                        'is_closed' => 'true'
+                                                    ]
+                                                ]
                                             ],
                                             [
                                                 'handle' => 'hours',
                                                 'field' => [
+                                                    'type' => 'grid',
+                                                    'display' => __('statamic-opening-hours::opening-hours.hours'),
                                                     'fields' => [
                                                         [
-                                                            'handle' => 'from',
+                                                            'handle' => 'description',
                                                             'field' => [
-                                                                'seconds_enabled' => false,
-                                                                'display' => __('statamic-opening-hours::opening-hours.from'),
-                                                                'type' => 'time',
-                                                                'icon' => 'time',
-                                                                'width' => 50,
-                                                                'listable' => 'hidden',
-                                                                'instructions_position' => 'above',
-                                                                'visibility' => 'visible',
-                                                                'always_save' => false,
-                                                                'validate' => 'required'
-                                                            ],
-                                                        ],
-                                                        [
-                                                            'handle' => 'to',
-                                                            'field' => [
-                                                                'seconds_enabled' => false,
-                                                                'display' => __('statamic-opening-hours::opening-hours.to'),
-                                                                'type' => 'time',
-                                                                'icon' => 'time',
-                                                                'width' => 50,
-                                                                'listable' => 'hidden',
-                                                                'instructions_position' => 'above',
-                                                                'visibility' => 'visible',
-                                                                'always_save' => false,
-                                                                'validate' => 'required'
-                                                            ],
+                                                                'type' => 'text',
+                                                                'display' => __('statamic-opening-hours::opening-hours.section.hours_description'),
+                                                                'width' => 100
+                                                            ]
                                                         ],
                                                     ],
                                                     'mode' => 'table',
-                                                    'add_row' => __('statamic-opening-hours::opening-hours.add-hours'),
-                                                    'reorderable' => true,
-                                                    'display' => __('statamic-opening-hours::opening-hours.exceptions.exceptional_hours'),
-                                                    'type' => 'grid',
-                                                    'icon' => 'grid',
-                                                    'listable' => 'hidden',
-                                                    'instructions_position' => 'above',
-                                                    'visibility' => 'visible',
-                                                    'always_save' => false,
-                                                    'instructions' => __('statamic-opening-hours::opening-hours.exceptions.exceptional_hours_display'),
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                                'display' => __('statamic-opening-hours::opening-hours.exceptions.display'),
-                                'type' => 'replicator',
-                                'icon' => 'replicator',
-                                'instructions' => __('statamic-opening-hours::opening-hours.exceptions.instructions'),
-                                'listable' => 'hidden',
-                                'instructions_position' => 'above',
-                                'visibility' => 'visible',
-                                'always_save' => false,
-                            ],
+                                                    'add_row' => __('statamic-opening-hours::opening-hours.section.add-hours'),
+                                                    'reorderable' => true
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ]
                         ]
                     ]
-                ],
-            ],
+                ]
+            ]
         ]);
     }
 }
