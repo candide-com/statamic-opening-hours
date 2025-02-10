@@ -12,22 +12,22 @@ class OpeningHoursBlueprint
         return Blueprint::make()->setContents([
             'sections' => [
                 'sections' => [
-                    'display' => __('statamic-opening-hours::opening-hours.sections'),
+                    'display' => __('statamic-opening-hours::opening-hours.global.sections'),
                     'fields' => [
                         [
                             'handle' => 'is_closed',
                             'field' => [
                                 'type' => 'toggle',
-                                'display' => __('statamic-opening-hours::opening-hours.is_closed'),
-                                'instructions' => __('statamic-opening-hours::opening-hours.is_closed_instructions'),
+                                'display' => __('statamic-opening-hours::opening-hours.global.is_closed'),
+                                'instructions' => __('statamic-opening-hours::opening-hours.global.is_closed_instructions'),
                             ]
                         ],
                         [
                             'handle' => 'closure_reason',
                             'field' => [
                                 'type' => 'text',
-                                'display' => __('statamic-opening-hours::opening-hours.closure_reason'),
-                                'instructions' => __('statamic-opening-hours::opening-hours.closure_reason_instructions'),
+                                'display' => __('statamic-opening-hours::opening-hours.global.closure_reason'),
+                                'instructions' => __('statamic-opening-hours::opening-hours.global.closure_reason_instructions'),
                                 'if' => [
                                     'is_closed' => 'true'
                                 ]
