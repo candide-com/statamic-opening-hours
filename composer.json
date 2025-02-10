@@ -1,8 +1,8 @@
 {
-  "name": "insight-media/statamic-opening-hours",
+  "name": "leekiernan/statamic-opening-hours",
   "description": "A Statamic addon to manage and display opening hours",
   "type": "statamic-addon",
-  "homepage": "https://github.com/insight-media/statamic-opening-hours",
+  "homepage": "https://github.com/leekiernan/statamic-opening-hours",
   "keywords": [
     "Statamic",
     "Opening hours",
@@ -13,15 +13,15 @@
   ],
   "authors": [
     {
-      "name": "Insight media",
-      "email": "dries@insight-media.be",
+      "name": "X",
+      "email": "lee@starlord.co",
       "role": "Developer"
     }
   ],
   "require": {
     "php": "^8.0",
     "spatie/opening-hours": "^2.13.0",
-    "statamic/cms": "^3.3||^4.0"
+    "statamic/cms": "^3.3||^4.0||^5.0"
   },
   "autoload": {
     "psr-4": {
