@@ -1,8 +1,8 @@
 {
-  "name": "leekiernan/statamic-opening-hours",
+  "name": "candide/statamic-opening-hours",
   "description": "A Statamic addon to manage and display opening hours",
   "type": "statamic-addon",
-  "homepage": "https://github.com/leekiernan/statamic-opening-hours",
+  "homepage": "https://github.com/candide-com/statamic-opening-hours",
   "keywords": [
     "Statamic",
     "Opening hours",
@@ -14,7 +14,7 @@
   "authors": [
     {
       "name": "X",
-      "email": "lee@starlord.co",
+      "email": "lee.kiernan@candide.com",
       "role": "Developer"
     }
   ],

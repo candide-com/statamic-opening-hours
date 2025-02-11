@@ -1,7 +1,7 @@
 <br>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://insight-media.be/images/gh/logo-dark.svg">
-  <img alt="Insight Media Logo" src="https://insight-media.be/images/gh/logo-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://candide-com.be/images/gh/logo-dark.svg">
+  <img alt="Insight Media Logo" src="https://candide-com.be/images/gh/logo-light.svg">
 </picture>
 
 # Statamic Opening hours
@@ -24,7 +24,7 @@
 You can search for this addon in the `Tools > Addons` section of the Statamic control panel and click **install**, or run the following command from your project root:
 
 ``` bash
-composer require insight-media/statamic-opening-hours
+composer require candide-com/statamic-opening-hours
 ```
 
 Publish the optional config file.
@@ -100,8 +100,8 @@ Check if closed at specific time:
 
 Query opening times for specific weekday:
 ``` antlers
-{{ openingHours:forDay day="monday" format="H:i" }} 
-    <div>{{ from }}-{{ to }}</div> 
+{{ openingHours:forDay day="monday" format="H:i" }}
+    <div>{{ from }}-{{ to }}</div>
 {{ /openingHours:forDay }}
 ```
 
@@ -115,7 +115,7 @@ Query opening times for all weekdays:
 Query opening times for specific date:
 ``` antlers
 {{ openingHours:forDate date="2022-12-14" format="H:i" }}
-    <div>{{ from }}-{{ to }}</div> 
+    <div>{{ from }}-{{ to }}</div>
 {{ /openingHours:forDate }}
  ```
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 class ServiceProvider extends AddonServiceProvider
 {
 
-    protected $viewNamespace = 'insight-media-opening-hours';
+    protected $viewNamespace = 'candide-com-opening-hours';
 
     protected $routes = [
         'cp' => __DIR__.'/../routes/cp.php',
