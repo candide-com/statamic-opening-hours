@@ -7,6 +7,7 @@ return [
     | Opening hours
     |--------------------------------------------------------------------------
     */
+    'opening-hours' => 'Opening hours',
     'exceptions' => [
         'display' => 'Exceptions',
         'instructions' => 'Set exceptional closing days.<br>It is possible to set optional exceptional opening hours per closing day.',
@@ -18,20 +19,26 @@ return [
     ],
     'sections' => 'Opening Hours Sections',
     'section' => [
-      'section_title' => 'Title',
-      'section_description' => 'Description',
-      'section_slug' => 'Slug',
-      'is_closed' => 'Temporarily Closed',
-      'closure_reason' => 'Closure Reason',
-      'hours' => 'Opening Hours',
-      'add-hours' => 'Add hours'
+      'title' => 'Section Title',
+      'description' => 'Section Description',
+      'slug' => 'Section Slug',
+      'closure' => [
+          'is_closed' => 'Temporarily Closed',
+          'reason' => 'Closure Reason',
+      ],
+      'hours' => [
+        'title' => 'Opening Hours',
+        'add' => 'Add hours',
+        'description' => 'Description',
+      ]
     ],
     'global' => [
-      'is_closed' => 'Temporarily Closed',
-      'is_closed_instructions' => 'Toggle this to indicate that the entire site is temporarily closed.',
-      'closure_reason' => 'Closure Reason',
-      'closure_reason_instructions' => 'Provide a reason for the temporary closure.'
+        'closure' => [
+            'is_closed' => 'Temporarily Closed',
+            'is_closed_instructions' => 'Toggle this to indicate that the entire site is temporarily closed.',
+            'reason' => 'Closure Reason',
+            'closure_reason_instructions' => 'Provide a reason for the temporary closure.'
+        ],
     ],
-    'hours_description' => 'Description',
 ];
 

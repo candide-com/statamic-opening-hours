@@ -12,22 +12,22 @@ class OpeningHoursBlueprint
         return Blueprint::make()->setContents([
             'sections' => [
                 'sections' => [
-                    'display' => __('statamic-opening-hours::opening-hours.global.sections'),
+                    'display' => __('statamic-opening-hours::opening-hours.sections'),
                     'fields' => [
                         [
                             'handle' => 'is_closed',
                             'field' => [
                                 'type' => 'toggle',
-                                'display' => __('statamic-opening-hours::opening-hours.global.is_closed'),
-                                'instructions' => __('statamic-opening-hours::opening-hours.global.is_closed_instructions'),
+                                'display' => __('statamic-opening-hours::opening-hours.global.closure.is_closed'),
+                                'instructions' => __('statamic-opening-hours::opening-hours.global.closure.is_closed_instructions'),
                             ]
                         ],
                         [
-                            'handle' => 'closure_reason',
+                            'handle' => 'reason',
                             'field' => [
                                 'type' => 'text',
-                                'display' => __('statamic-opening-hours::opening-hours.global.closure_reason'),
-                                'instructions' => __('statamic-opening-hours::opening-hours.global.closure_reason_instructions'),
+                                'display' => __('statamic-opening-hours::opening-hours.global.closure.reason'),
+                                'instructions' => __('statamic-opening-hours::opening-hours.global.closure.reason_instructions'),
                                 'if' => [
                                     'is_closed' => 'true'
                                 ]
@@ -40,7 +40,7 @@ class OpeningHoursBlueprint
                                 'display' => __('statamic-opening-hours::opening-hours.sections'),
                                 'sets' => [
                                     'section' => [
-                                        'display' => __('statamic-opening-hours::opening-hours.section.section_title'),
+                                        'display' => __('statamic-opening-hours::opening-hours.section.title'),
                                         'fields' => [
                                             [
                                                 'handle' => 'header',
@@ -52,7 +52,7 @@ class OpeningHoursBlueprint
                                                             'handle' => 'title',
                                                             'field' => [
                                                                 'type' => 'text',
-                                                                'display' => __('statamic-opening-hours::opening-hours.section.section_title'),
+                                                                'display' => __('statamic-opening-hours::opening-hours.section.title'),
                                                                 'validate' => 'required',
                                                                 'width' => 66
                                                             ]
@@ -61,7 +61,7 @@ class OpeningHoursBlueprint
                                                             'handle' => 'slug',
                                                             'field' => [
                                                                 'type' => 'slug',
-                                                                'display' => __('statamic-opening-hours::opening-hours.section.section_slug'),
+                                                                'display' => __('statamic-opening-hours::opening-hours.section.slug'),
                                                                 'from' => 'title',
                                                                 'width' => 33
                                                             ]
@@ -79,7 +79,7 @@ class OpeningHoursBlueprint
                                                 'handle' => 'description',
                                                 'field' => [
                                                     'type' => 'markdown',
-                                                    'display' => __('statamic-opening-hours::opening-hours.section.section_description'),
+                                                    'display' => __('statamic-opening-hours::opening-hours.section.description'),
                                                     'buttons' => ['bold', 'italic', 'unorderedlist', 'orderedlist', 'link']
                                                 ]
                                             ],
@@ -87,15 +87,15 @@ class OpeningHoursBlueprint
                                                 'handle' => 'is_closed',
                                                 'field' => [
                                                     'type' => 'toggle',
-                                                    'display' => __('statamic-opening-hours::opening-hours.section.is_closed'),
+                                                    'display' => __('statamic-opening-hours::opening-hours.section.closure.is_closed'),
                                                     'width' => 25
                                                 ]
                                             ],
                                             [
-                                                'handle' => 'closure_reason',
+                                                'handle' => 'reason',
                                                 'field' => [
                                                     'type' => 'text',
-                                                    'display' => __('statamic-opening-hours::opening-hours.section.closure_reason'),
+                                                    'display' => __('statamic-opening-hours::opening-hours.section.closure.reason'),
                                                     'width' => 75,
                                                     'if' => [
                                                         'is_closed' => 'true'
@@ -106,19 +106,19 @@ class OpeningHoursBlueprint
                                                 'handle' => 'hours',
                                                 'field' => [
                                                     'type' => 'grid',
-                                                    'display' => __('statamic-opening-hours::opening-hours.hours'),
+                                                    'display' => __('statamic-opening-hours::opening-hours.section.hours.title'),
                                                     'fields' => [
                                                         [
                                                             'handle' => 'description',
                                                             'field' => [
                                                                 'type' => 'text',
-                                                                'display' => __('statamic-opening-hours::opening-hours.section.hours_description'),
+                                                                'display' => __('statamic-opening-hours::opening-hours.section.hours.description'),
                                                                 'width' => 100
                                                             ]
                                                         ],
                                                     ],
                                                     'mode' => 'table',
-                                                    'add_row' => __('statamic-opening-hours::opening-hours.section.add-hours'),
+                                                    'add_row' => __('statamic-opening-hours::opening-hours.section.hours.add'),
                                                     'reorderable' => true
                                                 ]
                                             ]
