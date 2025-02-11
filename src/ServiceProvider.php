@@ -1,8 +1,8 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours;
+namespace Candide\StatamicOpeningHours;
 
-use InsightMedia\StatamicOpeningHours\Tags\OpeningHoursTag;
+use Candide\StatamicOpeningHours\Tags\OpeningHoursTag;
 use Statamic\Providers\AddonServiceProvider;
 use Statamic\Facades\CP\Nav;
 use Illuminate\Support\Facades\Event;

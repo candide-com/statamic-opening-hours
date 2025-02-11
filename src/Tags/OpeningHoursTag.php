@@ -1,10 +1,10 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours\Tags;
+namespace Candide\StatamicOpeningHours\Tags;
 
 use DateTime;
-use InsightMedia\StatamicOpeningHours\Facades\OpeningHoursStorage;
-use InsightMedia\StatamicOpeningHours\Parser;
+use Candide\StatamicOpeningHours\Facades\OpeningHoursStorage;
+use Candide\StatamicOpeningHours\Parser;
 use Spatie\OpeningHours\OpeningHours;
 use Statamic\Tags\Tags;
 use Statamic\Facades\Site;

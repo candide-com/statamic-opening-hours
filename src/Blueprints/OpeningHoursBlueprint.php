@@ -1,6 +1,6 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours\Blueprints;
+namespace Candide\StatamicOpeningHours\Blueprints;
 
 use Statamic\Facades\Blueprint;
 use Statamic\Facades\YAML;

@@ -1,13 +1,13 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours\Http\Controllers\API;
+namespace Candide\StatamicOpeningHours\Http\Controllers\API;
 
 use Illuminate\Http\JsonResponse;
 use Statamic\Http\Controllers\API\ApiController;
 use Statamic\Facades\GlobalSet;
 
 use Statamic\Facades\Site;
-use InsightMedia\StatamicOpeningHours\Storage\Storage;
+use Candide\StatamicOpeningHours\Storage\Storage;
 use Statamic\Facades\Config;
 use Statamic\Sites\Site as SiteObject;
 use Statamic\Facades\File;

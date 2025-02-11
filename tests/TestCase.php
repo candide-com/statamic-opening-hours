@@ -1,6 +1,6 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours\Tests;
+namespace Candide\StatamicOpeningHours\Tests;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
@@ -14,7 +14,7 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app): array
     {
         return [
-            \InsightMedia\StatamicOpeningHours\ServiceProvider::class,
+            \Candide\StatamicOpeningHours\ServiceProvider::class,
             \Statamic\Providers\StatamicServiceProvider::class,
         ];
     }

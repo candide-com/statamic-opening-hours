@@ -1,6 +1,6 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours;
+namespace Candide\StatamicOpeningHours;
 
 use Illuminate\Support\Facades\Route;
 use Statamic\Statamic;

@@ -8,8 +8,7 @@
     "Opening hours",
     "Opening times",
     "Closing times",
-    "Addon",
-    "Insight Media"
+    "Addon"
   ],
   "authors": [
     {
@@ -25,12 +24,12 @@
   },
   "autoload": {
     "psr-4": {
-      "InsightMedia\\StatamicOpeningHours\\": "src"
+      "Candide\\StatamicOpeningHours\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "InsightMedia\\StatamicOpeningHours\\Tests\\": "tests"
+      "Candide\\StatamicOpeningHours\\Tests\\": "tests"
     }
   },
   "scripts": {
@@ -43,7 +42,7 @@
     },
     "laravel": {
       "providers": [
-        "InsightMedia\\StatamicOpeningHours\\ServiceProvider"
+        "Candide\\StatamicOpeningHours\\ServiceProvider"
       ]
     }
   },

@@ -1,8 +1,8 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours\Facades;
+namespace Candide\StatamicOpeningHours\Facades;
 
-use InsightMedia\StatamicOpeningHours\Storage\Storage;
+use Candide\StatamicOpeningHours\Storage\Storage;
 use Illuminate\Support\Facades\Facade;
 
 class OpeningHoursStorage extends Facade

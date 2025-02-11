@@ -1,9 +1,9 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours\Tests\Unit\Tags;
+namespace Candide\StatamicOpeningHours\Tests\Unit\Tags;
 
-use InsightMedia\StatamicOpeningHours\Tags\OpeningHoursTag;
-use InsightMedia\StatamicOpeningHours\Tests\TestCase;
+use Candide\StatamicOpeningHours\Tags\OpeningHoursTag;
+use Candide\StatamicOpeningHours\Tests\TestCase;
 
 class OpeningHoursTagTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours\Http\Controllers;
+namespace Candide\StatamicOpeningHours\Http\Controllers;
 
-use InsightMedia\StatamicOpeningHours\Blueprints\OpeningHoursBlueprint;
-use InsightMedia\StatamicOpeningHours\Facades\OpeningHoursStorage;
+use Candide\StatamicOpeningHours\Blueprints\OpeningHoursBlueprint;
+use Candide\StatamicOpeningHours\Facades\OpeningHoursStorage;
 use Statamic\Facades\Site;
 
 class OpeningHoursController

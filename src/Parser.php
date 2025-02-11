@@ -1,6 +1,6 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours;
+namespace Candide\StatamicOpeningHours;
 
 class Parser
 {

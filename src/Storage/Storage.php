@@ -1,6 +1,6 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours\Storage;
+namespace Candide\StatamicOpeningHours\Storage;
 
 use Statamic\Facades\Config;
 use Statamic\Sites\Site as SiteObject;

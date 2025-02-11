@@ -1,9 +1,3 @@
-<br>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://candide-com.be/images/gh/logo-dark.svg">
-  <img alt="Insight Media Logo" src="https://candide-com.be/images/gh/logo-light.svg">
-</picture>
-
 # Statamic Opening hours
 
 > Set your business' opening hours and exceptional closing times in the Statamic control panel.
@@ -24,7 +18,7 @@
 You can search for this addon in the `Tools > Addons` section of the Statamic control panel and click **install**, or run the following command from your project root:
 
 ``` bash
-composer require candide-com/statamic-opening-hours
+composer require candide/statamic-opening-hours
 ```
 
 Publish the optional config file.
