@@ -30,6 +30,10 @@ return [
         'title' => 'Opening Hours',
         'add' => 'Add hours',
         'description' => 'Description',
+        'validation' => [
+            'invalid_format' => 'The opening hours format in :attribute is invalid. Please use format like "09:00-17:00" or "Mo-Fr 09:00-17:00".',
+            'instructions' => 'Set opening hours.'
+        ],
       ]
     ],
     'global' => [
@@ -37,7 +41,7 @@ return [
             'is_closed' => 'Temporarily Closed',
             'is_closed_instructions' => 'Toggle this to indicate that the entire site is temporarily closed.',
             'reason' => 'Closure Reason',
-            'closure_reason_instructions' => 'Provide a reason for the temporary closure.'
+            'reason_instructions' => 'Provide a reason for the temporary closure.',
         ],
     ],
 ];

@@ -57,6 +57,10 @@ tabs:
                           type: text
                           display: statamic-opening-hours::opening-hours.section.hours.description
                           width: 100
+                          validate:
+                            - required
+                            - "opening_hours_format:{{ section_index }}"
+                          instructions: statamic-opening-hours::opening-hours.section.hours.validation.instructions
                     mode: table
                     add_row: statamic-opening-hours::opening-hours.section.hours.add
                     reorderable: true
