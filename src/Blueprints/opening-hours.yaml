@@ -1,0 +1,61 @@
+tabs:
+  sections:
+    display: statamic-opening-hours::opening-hours.sections
+    fields:
+      -
+        handle: is_closed
+        field:
+          type: toggle
+          display: statamic-opening-hours::opening-hours.global.closure.is_closed
+          instructions: statamic-opening-hours::opening-hours.global.closure.is_closed_instructions
+      -
+        handle: reason
+        field:
+          type: text
+          display: statamic-opening-hours::opening-hours.global.closure.reason
+          instructions: statamic-opening-hours::opening-hours.global.closure.reason_instructions
+          if:
+            is_closed: true
+      -
+        handle: sections
+        field:
+          type: replicator
+          display: statamic-opening-hours::opening-hours.sections
+          sets:
+            section:
+              display: statamic-opening-hours::opening-hours.section.title
+              fields:
+                -
+                  handle: title
+                  field:
+                    type: text
+                    display: statamic-opening-hours::opening-hours.section.title
+                    validate: required
+                    width: 66
+                -
+                  handle: slug
+                  field:
+                    type: slug
+                    display: statamic-opening-hours::opening-hours.section.slug
+                    from: title
+                    width: 33
+                -
+                  handle: description
+                  field:
+                    type: markdown
+                    display: statamic-opening-hours::opening-hours.section.description
+                    buttons: [bold, italic, unorderedlist, orderedlist, link]
+                -
+                  handle: is_closed
+                  field:
+                    type: toggle
+                    display: statamic-opening-hours::opening-hours.section.closure.is_closed
+                    width: 25
+                -
+                  handle: reason
+                  field:
+                    type: text
+                    display: statamic-opening-hours::opening-hours.section.closure.reason
+                    width: 75
+                    if:
+                      is_closed: true
