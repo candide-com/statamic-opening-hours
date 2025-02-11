@@ -46,6 +46,21 @@ tabs:
                     display: statamic-opening-hours::opening-hours.section.description
                     buttons: [bold, italic, unorderedlist, orderedlist, link]
                 -
+                  handle: hours
+                  field:
+                    type: grid
+                    display: statamic-opening-hours::opening-hours.section.hours.title
+                    fields:
+                      -
+                        handle: description
+                        field:
+                          type: text
+                          display: statamic-opening-hours::opening-hours.section.hours.description
+                          width: 100
+                    mode: table
+                    add_row: statamic-opening-hours::opening-hours.section.hours.add
+                    reorderable: true
+                -
                   handle: is_closed
                   field:
                     type: toggle
