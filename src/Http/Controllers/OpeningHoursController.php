@@ -1,6 +1,6 @@
 <?php
 
-namespace InsightMedia\StatamicOpeningHours\Controllers;
+namespace InsightMedia\StatamicOpeningHours\Http\Controllers;
 
 use InsightMedia\StatamicOpeningHours\Blueprints\OpeningHoursBlueprint;
 use InsightMedia\StatamicOpeningHours\Facades\OpeningHoursStorage;

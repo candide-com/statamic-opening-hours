@@ -10,11 +10,15 @@ use Illuminate\Support\Facades\Route;
 
 class ServiceProvider extends AddonServiceProvider
 {
-
     protected $viewNamespace = 'candide-com-opening-hours';
 
     protected $routes = [
         'cp' => __DIR__.'/../routes/cp.php',
+        'api' => [
+            'prefix' => 'api',
+            'middleware' => 'api',
+            'path' => __DIR__.'/../routes/web.php'
+        ]
     ];
 
     protected $tags = [
@@ -35,5 +39,14 @@ class ServiceProvider extends AddonServiceProvider
                 ->route('opening-hours.index')
                 ->icon('time');
         });
+    }
+
+    public function boot()
+    {
+        parent::boot();
+
+        if (config('statamic.api.enabled')) {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        }
     }
 }
