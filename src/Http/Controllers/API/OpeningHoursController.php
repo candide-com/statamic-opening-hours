@@ -47,8 +47,8 @@ class OpeningHoursController extends ApiController
             return response()->json(['error' => 'Opening hours not found'], 404);
         }
 
-        $matchingLocation = collect($openingHours)->first(function ($location) use ($slug) {
-            return isset($location['header']['slug']) && $location['header']['slug'] === $slug;
+        $matchingLocation = collect($openingHours['sections'])->first(function ($section) use ($slug) {
+            return isset($section['slug']) && $section['slug'] === $slug;
         });
 
         if (!$matchingLocation) {
@@ -58,5 +58,4 @@ class OpeningHoursController extends ApiController
         return response()->json([
             'data' => $matchingLocation
         ]);
-    }
-}
+    }}
