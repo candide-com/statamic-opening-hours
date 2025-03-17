@@ -47,10 +47,6 @@ class ServiceProvider extends AddonServiceProvider
         });
     }
 
-    protected $scripts = [
-        __DIR__ . '/../resources/js/cp.js'
-    ];
-
     public function boot()
     {
         parent::boot();
