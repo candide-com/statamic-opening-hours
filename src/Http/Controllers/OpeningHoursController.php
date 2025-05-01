@@ -70,6 +70,7 @@ class OpeningHoursController
                 ->data([...$section, "template" => "opening-hours"])
                 ->id($section["id"]);
             $entry->save();
+            $entry->delete();
           };
         }
 
@@ -78,6 +79,7 @@ class OpeningHoursController
             ->slug('opening-hours')
             ->data($data);
         $entry->save();
+        $entry->delete();
 
         return $result;
     }
