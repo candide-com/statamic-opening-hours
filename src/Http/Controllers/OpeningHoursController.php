@@ -5,6 +5,14 @@ namespace Candide\StatamicOpeningHours\Http\Controllers;
 use Candide\StatamicOpeningHours\Blueprints\OpeningHoursBlueprint;
 use Candide\StatamicOpeningHours\Facades\OpeningHoursStorage;
 use Statamic\Facades\Site;
+use Statamic\Facades\Entry;
+
+use Statamic\Facades\Collection;
+use Illuminate\Support\Facades\Log;
+use Statamic\Events\EntrySaved;
+use Statamic\Events\GlobalSetSaved;
+use Statamic\Events\GlobalVariablesSaved;
+use Statamic\Facades\Blueprint;
 
 class OpeningHoursController
 {
@@ -45,7 +53,32 @@ class OpeningHoursController
 
     public function putData($data)
     {
-        return OpeningHoursStorage::putYaml(Site::selected(), $data);
-    }
+        $site = Site::selected(); // Get the site handle
+        $result = OpeningHoursStorage::putYaml($site, $data);
 
+        Log::info('GlobalSetSaved event dispatched. '. json_encode($data));
+
+        if (!Collection::find('opening-hours')) {
+            Collection::make('opening-hours')->save();
+        }
+
+        if ($data["sections"] !== null) {
+          foreach ($data["sections"] as $section) {
+            $entry = Entry::make()
+                ->collection('opening-hours')
+                ->slug('opening-hours')
+                ->data([...$section, "template" => "opening-hours"])
+                ->id($section["id"]);
+            $entry->save();
+          };
+        }
+
+        $entry = Entry::make()
+            ->collection('opening-hours')
+            ->slug('opening-hours')
+            ->data($data);
+        $entry->save();
+
+        return $result;
+    }
 }
