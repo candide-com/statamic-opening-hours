@@ -74,28 +74,20 @@ class OpeningHoursController
         }
         try {
           foreach ($data["sections"] as $section) {
-            Log::info(">>> Searching for : ".$section["slug"]);
             $entry = Entry::query()->where('collection', 'opening-hours')->where('slug', $section["slug"])->first();
 
             if ($entry) {
-              Log::info(">>> Found : ".json_encode($entry));
               // Force no update to ID.
               unset($section["id"]);
               foreach ($section as $dataKey => $dataValue) {
-                Log::info(">>> Set : ".$dataKey." => ".json_encode($dataValue));
                 $entry->set($dataKey, $dataValue);
               }
             } else {
-              Log::info(">>> Make new : ". json_encode($section));
               $entry = Entry::make()
               ->collection('opening-hours')
               ->slug($section["slug"])
               ->data([...$section, "template" => "opening-hours"]);
             }
-
-            $entry->afterSave(function ($entry) {
-              Log::info(">>> Saved : ". json_encode($entry));
-            });
 
             $entry->save();
           };
