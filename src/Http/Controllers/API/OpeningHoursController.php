@@ -5,6 +5,7 @@ namespace Candide\StatamicOpeningHours\Http\Controllers\API;
 use Illuminate\Http\JsonResponse;
 use Statamic\Http\Controllers\API\ApiController;
 use Statamic\Facades\GlobalSet;
+use Statamic\Facades\Entry;
 
 use Statamic\Facades\Site;
 use Candide\StatamicOpeningHours\Storage\Storage;
@@ -23,9 +24,20 @@ class OpeningHoursController extends ApiController
     {
         $this->abortIfDisabled();
 
-        $currentSite = Site::current();
-        $openingHours = Storage::getYaml($currentSite);
+        $entries = Entry::query()
+        ->where('collection', 'opening-hours')
+        ->where('slug', '!=', 'global')
+        ->where("enabled", true)
+        ->get();
 
+        $global = Entry::query()->where('collection', 'opening-hours')->where('slug', 'global')->first();
+        $openingHours = [
+          "sections" => $entries->map(function ($entry) {
+            return $entry->data()->toArray();
+          })->toArray(),
+          "is_closed" => $global ? $global->data()->get("is_closed") : "",
+          "reason" => $global ? $global->data()->get("reason") : "",
+        ];
 
         if (!$openingHours) {
             return response()->json(['error' => 'Opening hours not found'], 404);
@@ -40,22 +52,13 @@ class OpeningHoursController extends ApiController
     {
         $this->abortIfDisabled();
 
-        $currentSite = Site::current();
-        $openingHours = Storage::getYaml($currentSite);
+        $openingHours = Entry::query()->where('collection', 'opening-hours')->where('slug', $slug)->first();
 
         if (!$openingHours) {
             return response()->json(['error' => 'Opening hours not found'], 404);
         }
 
-        $matchingLocation = collect($openingHours['sections'])->first(function ($section) use ($slug) {
-            return isset($section['slug']) && $section['slug'] === $slug;
-        });
-
-        if (!$matchingLocation) {
-            return response()->json(['error' => 'Opening hours not found for ' . $slug], 404);
-        }
-
         return response()->json([
-            'data' => $matchingLocation
+            'data' => $openingHours
         ]);
     }}
