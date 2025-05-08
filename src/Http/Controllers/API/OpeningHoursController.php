@@ -33,7 +33,10 @@ class OpeningHoursController extends ApiController
         $global = Entry::query()->where('collection', 'opening-hours')->where('slug', 'global')->first();
         $openingHours = [
           "sections" => $entries->map(function ($entry) {
-            return $entry->data()->toArray();
+            return [
+              "id" => $entry->id(),
+              ...$entry->data()->toArray()
+            ];
           })->toArray(),
           "is_closed" => $global ? $global->data()->get("is_closed") : "",
           "reason" => $global ? $global->data()->get("reason") : "",
