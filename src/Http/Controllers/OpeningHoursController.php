@@ -52,7 +52,7 @@ class OpeningHoursController
         $result = [
           "sections" => $entries->map(function ($entry) {
             return $entry->data()->toArray();
-          })->toArray(),
+          })->sortBy("order")->toArray(),
           "is_closed" => $global ? $global->data()->get("is_closed") : "",
           "reason" => $global ? $global->data()->get("reason") : "",
         ];
@@ -73,9 +73,8 @@ class OpeningHoursController
           Collection::make('opening-hours')->save();
         }
         try {
-          foreach ($data["sections"] as $section) {
+          foreach ($data["sections"] as $index => $section) {
             $entry = Entry::query()->where('collection', 'opening-hours')->where('slug', $section["slug"])->first();
-
             if ($entry) {
               // Force no update to ID.
               unset($section["id"]);
@@ -89,6 +88,7 @@ class OpeningHoursController
               ->data([...$section, "template" => "opening-hours"]);
             }
 
+            $entry->set("order", $index);
             $entry->save();
           };
         } catch (\Exception $e) {
