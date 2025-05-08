@@ -43,7 +43,21 @@ class OpeningHoursController
 
     public function getData()
     {
-        return OpeningHoursStorage::getYaml(Site::selected());
+        $entries = Entry::query()
+        ->where('collection', 'opening-hours')
+        ->where('slug', '!=', 'global')
+        ->get();
+
+        $global = Entry::query()->where('collection', 'opening-hours')->where('slug', 'global')->first();
+        $result = [
+          "sections" => $entries->map(function ($entry) {
+            return $entry->data()->toArray();
+          })->toArray(),
+          "is_closed" => $global ? $global->data()->get("is_closed") : "",
+          "reason" => $global ? $global->data()->get("reason") : "",
+        ];
+
+        return $result;
     }
 
     public function getBlueprint()
@@ -54,33 +68,58 @@ class OpeningHoursController
     public function putData($data)
     {
         $site = Site::selected(); // Get the site handle
-        $result = OpeningHoursStorage::putYaml($site, $data);
-
-        Log::info('GlobalSetSaved event dispatched. '. json_encode($data));
 
         if (!Collection::find('opening-hours')) {
-            Collection::make('opening-hours')->save();
+          Collection::make('opening-hours')->save();
         }
-
-        if ($data["sections"] !== null) {
+        try {
           foreach ($data["sections"] as $section) {
-            $entry = Entry::make()
-                ->collection('opening-hours')
-                ->slug('opening-hours')
-                ->data([...$section, "template" => "opening-hours"])
-                ->id($section["id"]);
+            Log::info(">>> Searching for : ".$section["slug"]);
+            $entry = Entry::query()->where('collection', 'opening-hours')->where('slug', $section["slug"])->first();
+
+            if ($entry) {
+              Log::info(">>> Found : ".json_encode($entry));
+              // Force no update to ID.
+              unset($section["id"]);
+              foreach ($section as $dataKey => $dataValue) {
+                Log::info(">>> Set : ".$dataKey." => ".json_encode($dataValue));
+                $entry->set($dataKey, $dataValue);
+              }
+            } else {
+              Log::info(">>> Make new : ". json_encode($section));
+              $entry = Entry::make()
+              ->collection('opening-hours')
+              ->slug($section["slug"])
+              ->data([...$section, "template" => "opening-hours"]);
+            }
+
+            $entry->afterSave(function ($entry) {
+              Log::info(">>> Saved : ". json_encode($entry));
+            });
+
             $entry->save();
-            $entry->delete();
           };
+        } catch (\Exception $e) {
+          Log::error("Error : ".$e->getMessage());
+          return false;
         }
 
-        $entry = Entry::make()
-            ->collection('opening-hours')
-            ->slug('opening-hours')
-            ->data($data);
-        $entry->save();
-        $entry->delete();
+        $replica = $data;
+        unset($data["sections"]);
 
-        return $result;
+        $entry = Entry::query()->where('collection', 'opening-hours')->where('slug', 'global')->first();
+        if ($entry) {
+          foreach ($data as $dataKey => $dataValue) {
+            $entry->set($dataKey, $dataValue);
+          }
+        } else {
+          $entry = Entry::make()
+            ->collection('opening-hours')
+            ->slug('global')
+            ->data([...$section, "template" => "opening-hours"]);
+        }
+        $entry->save();
+
+        return $replica;
     }
 }
