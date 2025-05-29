@@ -21,6 +21,7 @@ tabs:
         field:
           type: replicator
           display: statamic-opening-hours::opening-hours.sections
+          max_sets: 1
           sets:
             section:
               display: statamic-opening-hours::opening-hours.section.title
@@ -39,6 +40,42 @@ tabs:
                     display: statamic-opening-hours::opening-hours.section.slug
                     from: title
                     width: 33
+                -
+                  handle: booking_link
+                  field:
+                    type: text
+                    display: statamic-opening-hours::opening-hours.section.booking_link
+                -
+                  handle: icon
+                  field:
+                    max_files: 1
+                    min_files: 0
+                    mode: grid
+                    container: opening-hours
+                    folder: /
+                    type: assets
+                    display: statamic-opening-hours::opening-hours.section.icon
+                -
+                  handle: associated_tour_markers
+                  field:
+                    type: replicator
+                    display: statamic-opening-hours::opening-hours.section.associated_tour_markers.title
+                    sets:
+                      section:
+                        display: statamic-opening-hours::opening-hours.section.associated_tour_markers.title
+                        fields:
+                          -
+                            handle: tour_id
+                            field:
+                              type: text
+                              display: statamic-opening-hours::opening-hours.section.associated_tour_markers.tour_id
+                              width: 50
+                          -
+                            handle: marker_id
+                            field:
+                              type: text
+                              display: statamic-opening-hours::opening-hours.section.associated_tour_markers.marker_id
+                              width: 50
                 -
                   handle: description
                   field:

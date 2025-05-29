@@ -2,10 +2,13 @@
 
 namespace Candide\StatamicOpeningHours\Http\Controllers\API;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\JsonResponse;
 use Statamic\Http\Controllers\API\ApiController;
 use Statamic\Facades\GlobalSet;
+use Statamic\Facades\Asset;
 use Statamic\Facades\Entry;
+use Statamic\Facades\AssetContainer;
 
 use Statamic\Facades\Site;
 use Candide\StatamicOpeningHours\Storage\Storage;
@@ -33,9 +36,11 @@ class OpeningHoursController extends ApiController
         $global = Entry::query()->where('collection', 'opening-hours')->where('slug', 'global')->first();
         $openingHours = [
           "sections" => $entries->map(function ($entry) {
+            $icon = $entry->get("icon") ? Asset::query()->where("container", "opening-hours")->where('path', 'like', $entry->get("icon"))->get()->first()->permalink : null;
             return [
               "id" => $entry->id(),
-              ...$entry->data()->toArray()
+              ...$entry->data()->toArray(),
+              "icon" => $icon
             ];
           })->toArray(),
           "is_closed" => $global ? $global->data()->get("is_closed") : "",
