@@ -36,11 +36,11 @@ class OpeningHoursController extends ApiController
         $global = Entry::query()->where('collection', 'opening-hours')->where('slug', 'global')->first();
         $openingHours = [
           "sections" => $entries->map(function ($entry) {
-            $icon = $entry->get("icon") ? Asset::query()->where("container", "opening-hours")->where('path', 'like', $entry->get("icon"))->get()->first()->permalink : null;
+            $icon = Asset::query()->where("container", "opening-hours")->where("id", "opening-hours::".$entry->get("icon"))->get()->first();
             return [
               "id" => $entry->id(),
               ...$entry->data()->toArray(),
-              "icon" => $icon
+              "icon" => $icon ? $icon->contents() : null
             ];
           })->toArray(),
           "is_closed" => $global ? $global->data()->get("is_closed") : "",
