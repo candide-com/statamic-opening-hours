@@ -31,6 +31,7 @@ class OpeningHoursController extends ApiController
         ->where('collection', 'opening-hours')
         ->where('slug', '!=', 'global')
         ->where("enabled", true)
+        ->orderBy('order', 'asc')
         ->get();
 
         $global = Entry::query()->where('collection', 'opening-hours')->where('slug', 'global')->first();
