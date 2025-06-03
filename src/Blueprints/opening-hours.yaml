@@ -21,7 +21,6 @@ tabs:
         field:
           type: replicator
           display: statamic-opening-hours::opening-hours.sections
-          max_sets: 1
           sets:
             section:
               display: statamic-opening-hours::opening-hours.section.title
